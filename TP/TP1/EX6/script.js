@@ -1,7 +1,6 @@
 let array = [20, 1, 13, 8, 10, 6, 15, 25, 2, 10, 14, 18, 9];
 
 function histogram(array) {
-    let tmparray = [[" "], [" "], [" "], [" "], [" "]];
     for (let i in array) {
         if (array[i] > 0 && array[i] <= 5) {
             tmparray[0].unshift("█");
