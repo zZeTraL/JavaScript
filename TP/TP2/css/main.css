@@ -1,0 +1,60 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-image: url(../img/main-background.png);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #34495e;
+    font-family: 'Roboto-Regular', sans-serif;
+    color: white;
+    /* Margin bottom by footer height */
+    margin: 0 0 40px 0;
+}
+
+#header {
+    margin: 1em;
+    padding: 0.3em 0.5em;
+    border-left: 5px solid #888;
+    border-bottom: 5px solid #888;
+    color: #888;
+}
+
+#header h1 {
+    padding: 0;
+    margin: 0;
+    font-size: xx-large;
+}
+
+#header h1 .subtitle {
+    font-size: x-large;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #EF798A;
+    text-align: center;
+    /* Set the fixed height of the footer here */
+    height: 30px;
+}
+
+#footer p {
+    padding: 0;
+    margin: 9px 0 0 0;
+    font-size: 12px;
+}
+
+#content {
+    width: 66%;
+    margin: 0 auto;
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url("../fonts/RobotoCondensed-Regular.ttf") format("truetype");
+}
