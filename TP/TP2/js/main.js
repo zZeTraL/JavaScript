@@ -1,21 +1,21 @@
 let mealListDiv = document.getElementById("list")
 
 for (let index = 0; index < meal.length; index++) {
-    let li = document.createElement("li")
-    li.innerHTML = "<strong>" + meal[index].name + " : " + getMealPrice(meal[index]) + "€</strong>"
-    mealListDiv.append(li)
-
+    // Création de ma liste <ul>
     let ul = document.createElement("ul")
-    ul.innerHTML = "<em>" + getComponent(meal[index].ingredients) + "<br>" + "Temps de préparation: " + meal[index].preparationTime + "</em>"
-    li.append(ul)
-    
+    mealListDiv.append(ul)
+
+    let li = document.createElement("li")
+    li.innerHTML = "<strong>" + meal[index].name + " : " + getMealPrice(meal[index]) + "€</strong>" +
+        "<br><em>Ingrédients: " + getComponent(meal[index].ingredients) + "<br>Temps de préparation: " + meal[index].preparationTime + "s</em>"
+    ul.append(li)
 }
 
 /**
  * Return the price of a meal
  * 
  * @param {meal} meal
- * @returns {any}
+ * @returns {Number}
  */
 function getMealPrice(meal){
     let price = parseFloat(meal.preparationPrice)
@@ -27,10 +27,8 @@ function getMealPrice(meal){
     return price
 }
 
-console.log(getMealPrice(meal[0]))
-
 /**
- * Return a string of all components required
+ * Return a list of all components required
  * 
  * @param {Array} array
  * @returns {String} 
@@ -38,7 +36,7 @@ console.log(getMealPrice(meal[0]))
 function getComponent(array){
     let str = ''
     for (let index = 0; index < array.length; index++) {
-        if(index == array.length - 1){
+        if(index === array.length - 1){
             str += ingredients[array[index]].name + "."
         } else {
             str += ingredients[array[index]].name + ", "

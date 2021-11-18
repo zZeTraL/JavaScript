@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="FR">
     <head>
         <meta charset="utf-8" />
         <title>TP2 - Javascript - 2020/2021</title>
@@ -11,19 +11,13 @@
             <h1>Javascript <span class="subtitle">Tuto Plats étudiants</span></h1>
         </div>
 
-        <div id="content">
-            <h2>
-                Liste des plats : 
-            </h2>
-            <div id="list">
-            </div>
+        <div id="list-container">
+            <h2>Liste des plats :</h2>
+            <div id="list"></div>
         </div>
 
-        <br><br>
-        <div id="content">
-            <h2>
-                Tableau des Ingrédients : 
-            </h2>
+        <div id="table-container">
+            <h2>Tableau des Ingrédients :</h2>
             <div id="table">
                 <table>
                     <tr>
@@ -40,6 +34,7 @@
         </div>
     </body>
 
+    <!-- L'ordre des scripts est important !!! -->
     <script src="../TP2/js/ingredients-data.js"></script>
     <script src="../TP2/js/meal-data.js"></script>
     <script src="../TP2/js/main.js"></script>

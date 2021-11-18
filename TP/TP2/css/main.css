@@ -6,21 +6,23 @@ html {
 body {
     background-image: url(../img/main-background.png);
     overflow-x: hidden;
-    margin: 0;
     padding: 0;
     background-color: #34495e;
     font-family: 'Roboto-Regular', sans-serif;
     color: white;
-    /* Margin bottom by footer height */
-    margin: 0 0 40px 0;
+    margin: 0;
+}
+
+h2 {
+    color: #EF798A;
 }
 
 #header {
     margin: 1em;
     padding: 0.3em 0.5em;
-    border-left: 5px solid #888;
-    border-bottom: 5px solid #888;
-    color: #888;
+    border-left: 5px solid white;
+    border-bottom: 5px solid white;
+    color: white;
 }
 
 #header h1 {
@@ -34,24 +36,23 @@ body {
 }
 
 #footer {
-    position: absolute;
-    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     background-color: #EF798A;
-    text-align: center;
-    /* Set the fixed height of the footer here */
-    height: 30px;
+    height: 75px;
 }
 
 #footer p {
+    font-family: 'Roboto-Regular', sans-serif;
     padding: 0;
-    margin: 9px 0 0 0;
-    font-size: 12px;
+    font-size: 15px;
 }
 
-#content {
+#list-container, #table-container {
     width: 66%;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
 @font-face {
