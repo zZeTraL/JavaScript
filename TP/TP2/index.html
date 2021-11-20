@@ -35,8 +35,13 @@
     </body>
 
     <!-- L'ordre des scripts est important !!! -->
-    <script src="../TP2/js/ingredients-data.js"></script>
-    <script src="../TP2/js/meal-data.js"></script>
+    <!-- on load en premiers les data puis les modules puis le script principal -->
+    <script src="js/Data/IngredientData.js"></script>
+    <script src="js/Data/MealData.js"></script>
+
+    <script src="js/Manager/MealManager.js"></script>
+    <script src="js/Manager/IngredientManager.js"></script>
+
     <script src="../TP2/js/main.js"></script>
 
 </html>

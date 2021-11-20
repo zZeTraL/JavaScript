@@ -4,6 +4,10 @@
     width: 100%;
 }
 
+#table tr {
+    margin-top: 10px;
+}
+
 #table th {
     border-bottom: 2px solid white;
     text-align: left;
