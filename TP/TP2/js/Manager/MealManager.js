@@ -4,7 +4,7 @@
  * @param {meal} meal
  * @returns {Number}
  */
-function getMealPrice(meal ){
+function getMealPrice(meal) {
     let price = parseFloat(meal.preparationPrice);
     for (let index = 0; index < meal.ingredients.length; index++) {
         // DEBUG
@@ -20,10 +20,11 @@ function getMealPrice(meal ){
  * @param {Array} array
  * @returns {String}
  */
-function getComponent(array){
+function getComponent(array) {
     let str = '';
     for (let index = 0; index < array.length; index++) {
-        if(index === array.length - 1){            str += ingredients[array[index]].name + ".";
+        if (index === array.length - 1) {
+            str += ingredients[array[index]].name + ".";
         } else {
             str += ingredients[array[index]].name + ", ";
         }
