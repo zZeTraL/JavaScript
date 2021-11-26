@@ -18,7 +18,8 @@ for (let index = 0; index < meal.length; index++) {
     // on lui ajoute du texte
     // (le nom du plat / le prix total du plat / les ingrédients requis et le temps de préparation)
     li.innerHTML = "<strong>" + meal[index].name + " : " + getMealPrice(meal[index]) + "€</strong>" +
-        "<br><em>Ingrédients: " + getComponent(meal[index].ingredients) + "<br>Temps de préparation: " + meal[index].preparationTime + "s</em>";
+        "<br><em>Ingrédients: " + getComponent(meal[index].ingredients) +
+        "<br>Temps de préparation: " + meal[index].preparationTime + "min</em>";
 
     // on ajoute l'élément li à ul (i.e. ul à donc pour childs une multitude de balise <li>)
     ul.append(li);
