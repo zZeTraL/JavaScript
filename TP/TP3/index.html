@@ -5,68 +5,110 @@
     <title>TP3 - Calculatrice</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body onload="reset()">
+<body>
     <main>
         <section class="section-container">
             <h2>Calculatrice</h2>
-            <div class ="table-container">
-                <table class="calculatorTable">
+            <div class ="calculator-container">
+                <div class="grid-container">
+                    <div class="grid-calculator-input">
+                        <input id="displayInput" type="text" value=""></input>
+                    </div>
+                    <div class="grid-div">
+                        <button>7</button>
+                        <button>8</button>
+                        <button>9</button>
+                        <button class="btn-control"><math>X</math></button>
+                        <button class="btn-control">AC</button>
+                    </div>
+                    <div class="grid-div">
+                        <button>4</button>
+                        <button>5</button>
+                        <button>6</button>
+                        <button class="btn-operator">*</button>
+                        <button class="btn-operator">/</button>
+                    </div>
+                    <div class="grid-div">
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button class="btn-operator">+</button>
+                        <button class="btn-operator">-</button>
+                    </div>
+                    <div class="grid-div">
+                        <button>0</button>
+                        <button class="btn-control">.</button>
+                        <button class="btn-control">x10<sup><math>x</math></sup></button>
+                        <button class="btn-control">REP</button>
+                        <button id="btn-equal">=</button>
+                    </div>
+                </div>
+
+                <!--<table class="calculatorTable">
                     <thead>
                     <tr>
-                        <th><input id="consoleOutput" type="text" value=""></input></th>
+                        <th><input id="displayInput" type="text" value=""></input></th>
                     </tr>
                     </thead>
                     <tbody class="test">
                     <tr>
                         <td>
-                            <button id="(" onclick="display('(')">(</button>
-                            <button id=")" onclick="display(')')">)</button>
-                            <button onclick="display('%')">%</button>
-                            <button id="CE" onclick="reset()">CE</button>
+                            <button class="btn">(</button>
+                            <button class="btn">)</button>
+                            <button class="btn">%</button>
+                            <button class="btn">CE</button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button onclick="display('7')">7</button>
-                            <button onclick="display('8')">8</button>
-                            <button onclick="display('9')">9</button>
-                            <button onclick="display('/')">/</button>
+                            <button class="btn">7</button>
+                            <button class="btn">8</button>
+                            <button class="btn">9</button>
+                            <button class="btn">/</button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button onclick="display('4')">4</button>
-                            <button onclick="display('5')">5</button>
-                            <button onclick="display('6')">6</button>
-                            <button onclick="display('*')">x</button>
+                            <button class="btn">4</button>
+                            <button class="btn">5</button>
+                            <button class="btn">6</button>
+                            <button class="btn">*</button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button onclick="display('1')">1</button>
-                            <button onclick="display('2')">2</button>
-                            <button onclick="display('3')">3</button>
-                            <button onclick="display('-')">-</button>
+                            <button class="btn">1</button>
+                            <button class="btn">2</button>
+                            <button class="btn">3</button>
+                            <button class="btn">-</button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button onclick="display('0')">0</button>
-                            <button onclick="display('.')">.</button>
-                            <button onclick="calculer()">=</button>
-                            <button onclick="display('+')">+</button>
+                            <button class="btn">0</button>
+                            <button class="btn">.</button>
+                            <button class="btn">=</button>
+                            <button class="btn">+</button>
                         </td>
                     </tr>
                     </tbody>
-                </table>
+                </table>-->
             </div>
+        </section>
+        <section>
+            <h2>Graphique output:</h2>
+
         </section>
     </main>
 
-    <footer class="footer">
+    <!-- <footer class="footer">
         <p>&copy; Haboussi Lucas - CIR 2 - 2020/2021</p>
-    </footer>
+    </footer> -->
 
+    <!-- On load les modules / les listeneurs puis le main -->
+    <script src="js/manager/DisplayManager.js"></script>
+    <script src="js/manager/CalculatorManager.js"></script>
+    <script src="js/listener/OnInteraction.js"></script>
     <script src="js/main.js"></script>
 
 </body>
