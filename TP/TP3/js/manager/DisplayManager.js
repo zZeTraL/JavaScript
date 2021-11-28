@@ -4,7 +4,7 @@ let display = (function() {
     let displayText = null;
 
     return {
-        // reset de l'affichage
+        // Reset de l'affichage
         reset: () => {
           displayInput.value = "";
           displayText = "";
@@ -12,6 +12,7 @@ let display = (function() {
           calculator.setOperatorType(null);
         },
 
+        // Clear de l'affichage (mémoire non effacé)
         clear: () => {
             displayInput.value = "";
             displayText = "";

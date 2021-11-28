@@ -1,6 +1,7 @@
 let calculator = (function() {
 
     let previousResult = 0;
+    let repResult = 0
     let operatorType = '';
 
     return {
@@ -27,10 +28,12 @@ let calculator = (function() {
         // Getters
         getPreviousResult: () => previousResult,
         getOperatorType: () => operatorType,
+        getRepResult: () => repResult,
 
         // Setters
         setPreviousResult: (number) => previousResult = number,
         setOperatorType: (array) => operatorType = array,
+        setRepResult: (number) => repResult = number,
 
     }
 
