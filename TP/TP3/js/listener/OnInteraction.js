@@ -11,8 +11,8 @@ window.onload = () =>{
     }
 }
 
-function isButtonPressed(){
-    let key = this.innerText;
+function isButtonPressed(event){
+    let key;
     // DEBUG
     //console.log(key + " was pressed");
 
@@ -20,9 +20,20 @@ function isButtonPressed(){
      * Liste de toutes les touches qui peuvent être activé
      * Cette liste va nous servir pour la saisie sur clavier
      */
-    let controlList = ['AC', 'X', 'REP', "="];
+    let controlList = ['AC', 'X', 'REP', "=", 'Enter', 'Escape'];
     let operatorList = ['+', '*', '-', '/'];
     let numberList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
+
+    let keyList = operatorList + numberList + ['Enter', 'Escape'];
+
+    if(event.type == 'keydown'){
+        if(keyList.includes(event.key)){
+            event.preventDefault();
+            key = event.key;
+        }
+    } else {
+        key = this.innerText;
+    }
 
     // Si numberList contient ma key (retourne un booléen true or false)
     if(numberList.includes(key)){
@@ -35,7 +46,7 @@ function isButtonPressed(){
         let currentResult = display.getArray();
 
         // Si rien n'est affiché on empêche d'utiliser les opérateurs
-        if(currentResult == ''){
+        if(currentResult == '' || currentResult == 'X'){
             return;
         } else {
             calculator.setPreviousResult(currentResult);
@@ -51,6 +62,7 @@ function isButtonPressed(){
     // Si controlList contient ma key
     if(controlList.includes(key)){
         switch (key){
+            case 'Escape':
             case 'AC':
                 // reset de l'affichage
                 display.reset();
@@ -67,7 +79,13 @@ function isButtonPressed(){
                 display.addToArray(repResult);
                 break;
 
+            case 'Enter':
             case '=':
+
+                if(display.getArray().includes('X')){
+                    console.log(display.getArray());
+                }
+
                 var previousResult = calculator.getPreviousResult();
                 var currentResult = display.getArray();
                 var result;
@@ -84,6 +102,9 @@ function isButtonPressed(){
                 // On reset le string de départ afin d'éviter que lorsque l'on appuie sur = on ajoute indéfiniment previousResult
                 calculator.setPreviousResult(0);
                 break;
+
+            case 'X':
+                display.addToArray(key);
 
             default:
                 break;
@@ -112,6 +133,5 @@ function isButtonPressed(){
      *  Je vais pouvoir calculer ainsi mon expression est la save dans previousResult et ainsi de suite
      *
      */
-
 
 }

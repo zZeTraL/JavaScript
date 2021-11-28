@@ -47,7 +47,9 @@
         </section>
         <section>
             <h2>Graphique output:</h2>
-
+            <div>
+                <canvas id="myChart" width="400px" height="250px" style="background-color: white"></canvas>
+            </div>
         </section>
     </main>
 
@@ -56,8 +58,11 @@
     </footer> -->
 
     <!-- On load les modules / les listeneurs puis le main -->
+    <script src="js/libs/Chart.js"></script>
+
     <script src="js/manager/DisplayManager.js"></script>
     <script src="js/manager/CalculatorManager.js"></script>
+    <script src="js/manager/GraphManager.js"></script>
     <script src="js/listener/OnInteraction.js"></script>
     <script src="js/main.js"></script>
 
