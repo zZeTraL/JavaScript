@@ -26,7 +26,7 @@ function isButtonPressed(event){
 
     let keyList = operatorList + numberList + ['Enter', 'Escape'];
 
-    if(event.type == 'keydown'){
+    if(event.type === 'keydown'){
         if(keyList.includes(event.key)){
             event.preventDefault();
             key = event.key;
@@ -46,7 +46,7 @@ function isButtonPressed(event){
         let currentResult = display.getArray();
 
         // Si rien n'est affiché on empêche d'utiliser les opérateurs
-        if(currentResult == '' || currentResult == 'X'){
+        if(currentResult === '' || currentResult === 'X'){
             return;
         } else {
             calculator.setPreviousResult(currentResult);
@@ -83,7 +83,9 @@ function isButtonPressed(event){
             case '=':
 
                 if(display.getArray().includes('X')){
-                    console.log(display.getArray());
+                    // DEBUG
+                    //console.log(display.getArray());
+                    updateGraphic(display.getArray());
                 }
 
                 var previousResult = calculator.getPreviousResult();
