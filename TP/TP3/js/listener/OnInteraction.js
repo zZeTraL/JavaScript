@@ -1,20 +1,25 @@
-window.onload = () =>{
+window.onload = () => {
 
     // A chaque load de la page on réinitialise l'affichage
     display.reset();
 
     // Boucle qui parcourir chaque element avec le balisage <button>
     let allButton = document.getElementsByTagName("button")
-    for(let element of allButton){
+    for (let element of allButton) {
         // Chacun de ces éléments exécutent désormais une fonction à chaque clique
         element.addEventListener('click', isButtonPressed);
     }
 }
 
-function isButtonPressed(event){
+/**
+ * Permet d'intéragir avec la calculatrice (c'est ici où toutes nos actions sont centralisées)
+ *
+ * @param event
+ */
+function isButtonPressed(event) {
     let key;
     // DEBUG
-    //console.log(key + " was pressed");
+    //console.log(event.keyCode + " was pressed");
 
     /*
      * Liste de toutes les touches qui peuvent être activé
@@ -26,8 +31,9 @@ function isButtonPressed(event){
 
     let keyList = operatorList + numberList + ['Enter', 'Escape'];
 
-    if(event.type === 'keydown'){
-        if(keyList.includes(event.key)){
+    if (event.type === 'keydown') {
+        if (keyList.includes(event.key)) {
+            displayInput.focus();
             event.preventDefault();
             key = event.key;
         }
@@ -36,19 +42,20 @@ function isButtonPressed(event){
     }
 
     // Si numberList contient ma key (retourne un booléen true or false)
-    if(numberList.includes(key)){
+    if (numberList.includes(key)) {
         // On affiche key
         display.addToArray(key)
     }
 
     // Si operatorListe contient ma key
-    if(operatorList.includes(key)){
+    if (operatorList.includes(key)) {
         let currentResult = display.getArray();
 
         // Si rien n'est affiché on empêche d'utiliser les opérateurs
-        if(currentResult === '' || currentResult === 'X'){
+        if (currentResult === '' || currentResult === 'X') {
             return;
         } else {
+            // On save l'ancien résultat
             calculator.setPreviousResult(currentResult);
 
             // On clear l'affichage
@@ -60,20 +67,22 @@ function isButtonPressed(event){
     }
 
     // Si controlList contient ma key
-    if(controlList.includes(key)){
-        switch (key){
+    if (controlList.includes(key)) {
+        switch (key) {
             case 'Escape':
             case 'AC':
-                // reset de l'affichage
+                // On reset de l'affichage
                 display.reset();
                 break;
 
             case 'REP':
                 var repResult = calculator.getRepResult();
 
-                // clear de l'écran (mémoire non effacé)
+                // On clear l'écran (mémoire non effacé)
                 display.clear();
-                if(repResult == 0){break;}
+                if (repResult == 0) {
+                    break;
+                }
 
                 // J'affiche mon ancien résultat
                 display.addToArray(repResult);
@@ -81,18 +90,29 @@ function isButtonPressed(event){
 
             case 'Enter':
             case '=':
-
-                if(display.getArray().includes('X')){
-                    // DEBUG
-                    //console.log(display.getArray());
-                    graphManager.setData(null, "data");
-                }
-
                 var previousResult = calculator.getPreviousResult();
                 var currentResult = display.getArray();
                 var result;
 
-                if(previousResult == 0 || currentResult == '' || calculator.getOperatorType() == null){break;}
+                if (currentResult.includes('X')) {
+                    // DEBUG
+                    //console.log(display.getArray());
+                    graphManager.setData(null, "data");
+                    break;
+                }
+
+                // Saisie inline de notre expression (saisie par clavier) (peut-être optimisé)
+                if (currentResult.includes('+') || currentResult.includes('-') || currentResult.includes('*') || currentResult.includes('/')) {
+                    result = Function("return " + display.getArray())();
+                    display.setArray(result)
+                    calculator.setRepResult(result);
+                    break;
+                }
+
+                // Si aucune résultat précédent et aucun saisi actuellement et aucun operator save on ne fait rien
+                if (previousResult == 0 || currentResult == '' || calculator.getOperatorType() == null) {
+                    break;
+                }
                 result = calculator.calculate(previousResult, currentResult, calculator.getOperatorType());
 
                 // Update de l'affichage
@@ -106,8 +126,16 @@ function isButtonPressed(event){
                 break;
 
             case 'X':
+                let array = display.getArray();
+                let countOfX = 1;
+                for (let i = 0; i < array.length; i++) {
+                    if (array[i] === "X") {
+                        ++countOfX;
+                    }
+                }
+                if (countOfX > 1) break;
                 display.addToArray(key);
-
+                break;
             default:
                 break;
         }
@@ -128,6 +156,7 @@ function isButtonPressed(event){
      *  se termine lorsque un autre opérateur est appelé ou si l'opérateur = est appelé)
      *
      *  Je vais pouvoir calculer ainsi mon expression est la save dans previousResult et ainsi de suite
+     *  (La calculatrice intègre aussi une saisie clavier qui se fait inline)
      *
      */
 

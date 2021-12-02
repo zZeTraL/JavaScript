@@ -83,6 +83,14 @@ h2 {
     height: 50px;
 }
 
+button:focus {
+    opacity: 1;
+}
+
+button:active {
+    color: grey;
+}
+
 button:hover {
     opacity: 1;
 }

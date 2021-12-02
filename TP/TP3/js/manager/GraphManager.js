@@ -58,13 +58,8 @@ let graphManager = (function() {
                         graphic.update();
                     }
                 }
-
-                console.log(type)
-                console.log(newData)
-
                 switch (type){
                     case "data":
-
                         // On va venir calculer les 50 premières images de notre fonction
                         let dataRetrieved = calculator.calculateFunction(display.getArray(), 51);
 
@@ -80,11 +75,23 @@ let graphManager = (function() {
 
                         // On update le graphique
                         graphic.update();
+
+                        display.setArray("Graphique disponible en-dessous")
+                        setTimeout(function() {
+                            display.reset();
+                        }, 1500);
+
                         break;
 
                     case "backgroundColor":
-                        graphic.data.datasets[0].backgroundColor = newData;
-                        graphic.update();
+                        // On set la couleur de nos points
+                        console.log(typeof newData);
+                        if(typeof newData == "string"){
+                            graphic.data.datasets[0].backgroundColor = newData;
+                            graphic.update();
+                        } else {
+                            console.error("Invalid type for function graphManager.setData()\nArgument must be a string")
+                        }
                         break;
                     default:
                         break;
