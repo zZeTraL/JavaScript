@@ -5,6 +5,14 @@ let calculator = (function() {
     let operatorType = '';
 
     return {
+        /**
+         * Permet de calculer une expression basique
+         *
+         * @param {number} number
+         * @param {number} otherNumber
+         * @param {string} op
+         * @returns {number}
+         */
         calculate: (number, otherNumber, op) => {
             number = parseFloat(number);
             otherNumber = parseFloat(otherNumber);
@@ -22,6 +30,31 @@ let calculator = (function() {
             // DEBUG
             //console.log("Result is " + result);
             return result;
+        },
+
+        /**
+         * Permet de calculer les n premières images d'une fonction
+         *
+         * @param {string} str
+         * @param {number} n
+         * @returns {[{}]}
+         */
+        calculateFunction: (str, n) => {
+            let dataList = [{}];
+            for (let i = 0; i < n; i++) {
+                let indexOfX = str.indexOf('X');
+                str = str.replace('X', i);
+                // DEBUG
+                console.log(str);
+                console.log(Function("return " + parseFloat(str))());
+
+                let tmp = {x: i, y:  parseFloat(Function("return " + str)())};
+                // Pour les fonctions du type 1/X : car lorsque i = 1 il va replace le premier 1
+                str = str.replaceAt(indexOfX, 'X');
+                console.log(tmp);
+                dataList.push(tmp);
+            }
+            return dataList;
         },
 
 

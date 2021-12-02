@@ -85,7 +85,7 @@ function isButtonPressed(event){
                 if(display.getArray().includes('X')){
                     // DEBUG
                     //console.log(display.getArray());
-                    updateGraphic(display.getArray());
+                    graphManager.setData(null, "data");
                 }
 
                 var previousResult = calculator.getPreviousResult();
@@ -110,11 +110,6 @@ function isButtonPressed(event){
 
             default:
                 break;
-
-            /* TODO
-             *  - Rendre fonctionnel l'utilisation des puissance de 10
-             *  - Afficher le graph en de f(x) (optionnel) car demande un peu plus de travail (saisi manuel)
-            */
         }
     }
 
