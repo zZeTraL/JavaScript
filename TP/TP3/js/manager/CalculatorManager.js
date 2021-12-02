@@ -41,17 +41,20 @@ let calculator = (function() {
          */
         calculateFunction: (str, n) => {
             let dataList = [{}];
+            let savedString = str;
+            let indexOfX = str.indexOf('X');
             for (let i = 0; i < n; i++) {
-                let indexOfX = str.indexOf('X');
+                if(i > 10) str = savedString;
+
                 str = str.replace('X', i);
                 // DEBUG
-                console.log(str);
-                console.log(Function("return " + parseFloat(str))());
+                //console.log(str);
+                //console.log(Function("return " + parseFloat(str))());
 
                 let tmp = {x: i, y:  parseFloat(Function("return " + str)())};
                 // Pour les fonctions du type 1/X : car lorsque i = 1 il va replace le premier 1
                 str = str.replaceAt(indexOfX, 'X');
-                console.log(tmp);
+                //console.log(tmp);
                 dataList.push(tmp);
             }
             return dataList;

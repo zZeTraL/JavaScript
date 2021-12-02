@@ -29,6 +29,13 @@ function isInput(event){
     }
 }
 
+/**
+ * Permet de remplacer un caractère d'un string à un index précis
+ *
+ * @param index
+ * @param replacement
+ * @returns {string}
+ */
 String.prototype.replaceAt = function(index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }

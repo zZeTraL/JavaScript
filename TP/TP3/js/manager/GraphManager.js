@@ -7,6 +7,7 @@ let graphManager = (function() {
 
     let data = {
         datasets: [{
+            label: "Fonction",
             backgroundColor: "Black",
             data: [],
         }]
@@ -14,13 +15,19 @@ let graphManager = (function() {
 
     let options = {
         responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: "Graphique de la fonction f(x)"
+            },
+        },
         indexAxis: ['x', 'y'],
         scales: {
             x: {
-                beginAtZero: true,
+                min: 0,
             },
             y: {
-                beginAtZero: true,
+                min: 0,
             }
         }
     };
@@ -39,36 +46,45 @@ let graphManager = (function() {
         /**
          * Permet d'update le graphique avec une nouvelle fonction ou bien de le styliser
          *
-         * @param {Object} newData
+         * @param {any} newData
          * @param {string} type
          */
         setData: (newData, type) => {
             if(dataTypeList.includes(type)){
-                if(oldData != null) {
-                    while (graphic.data.datasets[0].data.length != 0){
+                if(type == "data" && oldData != null) {
+                    while (graphic.data.datasets[0].data.length !== 0){
                         graphic.data.labels.pop();
                         graphic.data.datasets[0].data.pop();
                         graphic.update();
                     }
                 }
 
+                console.log(type)
+                console.log(newData)
+
                 switch (type){
                     case "data":
 
-                        let dataRetrieved = calculator.calculateFunction(display.getArray(), 10);
+                        // On va venir calculer les 50 premières images de notre fonction
+                        let dataRetrieved = calculator.calculateFunction(display.getArray(), 51);
+
+                        // On stocke les anciennes de données afin de pouvoir les rétablir si on le souhaite
                         oldData = dataRetrieved;
 
+                        // On va ajouter chaque objet (qui contient la composante x et y) au dataset
                         graphic.data.datasets.forEach((dataset) => {
                             for (let i = 0; i < dataRetrieved.length; i++){
                                 dataset.data.push(dataRetrieved[i]);
                             }
-                            // DEBUG
-                            //console.log(dataset.data.length);
                         })
+
+                        // On update le graphique
                         graphic.update();
                         break;
+
                     case "backgroundColor":
-                        data.datasets.backgroundColor = newData;
+                        graphic.data.datasets[0].backgroundColor = newData;
+                        graphic.update();
                         break;
                     default:
                         break;
