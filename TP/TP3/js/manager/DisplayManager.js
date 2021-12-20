@@ -19,7 +19,7 @@ let display = (function() {
         },
 
         // Adders
-        addToArray: (array) => {
+        addToArray: array => {
             displayText += array;
             displayInput.value = displayText;
         },
@@ -28,10 +28,16 @@ let display = (function() {
         getArray: () => displayText,
 
         // Setters
-        setArray: (array) => {
+        setArray(array) {
             displayText = array
             displayInput.value = displayText;
         },
+
+        getName(index){
+            let result = data.filter(obj => {
+                return
+            })
+        }
 
     }
 
