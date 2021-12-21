@@ -43,11 +43,13 @@ table {
 }
 
 td {
+    cursor: pointer;
     border: solid 1px white;
     display: table-cell;
     width: 100px;
     height: 100px;
     text-align: center;
+    font-size: 2rem;
 }
 
 /*
