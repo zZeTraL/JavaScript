@@ -8,13 +8,13 @@ class TicTacToeView{
 
     // Setters
     displayCurrentPlayer(number){
-        document.getElementById("player_number").innerHTML = number;
+        document.getElementById("player_number").textContent = "C'est au joueur: " + number;
     }
 
     displaySymbol(column, line, index){
         if(this.gameCore.getCaseState(column, line) === undefined){
             let gridCase = document.getElementsByTagName("td");
-            gridCase[index - 1].innerHTML = this.gameCore.getCurrentPlayer();
+            gridCase[index - 1].textContent = this.gameCore.getCurrentPlayer();
         } else {
             console.log("THIS CASE IS ALREADY CROSSED !!!!")
         }
@@ -24,14 +24,17 @@ class TicTacToeView{
     // Methods
     isGameFinished(){
         if(this.gameCore.isFinished()){
-            console.log("GAME IS FINISHED, DO WE HAVE A WINNER ???");
+            let outputResult = document.getElementById("output");
+            //console.log("GAME IS FINISHED, DO WE HAVE A WINNER ???");
             if(this.gameCore.hasWinner()){
-                console.log("GAME IS FINISHED, WE HAVE A WINNER !!!!");
-                console.log("THE WINNER IS: " + this.gameCore.getWinner());
-                console.log("GAME: " + this.gameName + " IS NOW FINISHED !!!")
+                //console.log("GAME IS FINISHED, WE HAVE A WINNER !!!!");
+                //console.log("THE WINNER IS: " + this.gameCore.getWinner());
+                //console.log("GAME: " + this.gameName + " IS NOW FINISHED !!!");
+                outputResult.textContent = "GAME IS FINISHED (ID: " + this.gameName + "), DO WE HAVE A WINNER ?\nTHE WINNER IS " + this.gameCore.getWinner();
                 return true;
             } else {
-                console.log("NO WINNER :'(");
+                //console.log("NO WINNER :'(");
+                outputResult.textContent = "GAME IS FINISHED (ID: " + this.gameName + "), DO WE HAVE A WINNER ?\nNO WINNER :'(";
                 return true;
             }
         } else {
@@ -43,7 +46,7 @@ class TicTacToeView{
         this.gameCore.reset();
         let gridCase = document.getElementsByTagName("td");
         for (const gridCaseElement of gridCase) {
-            gridCaseElement.innerHTML = "";
+            gridCaseElement.textContent = "";
         }
         this.displayCurrentPlayer(0);
     }

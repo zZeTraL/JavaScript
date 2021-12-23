@@ -7,5 +7,4 @@
     Array.from(gridCase).forEach(function(element) {
         element.addEventListener('click', (event) => view.caseClicked(event));
     });
-
 })();

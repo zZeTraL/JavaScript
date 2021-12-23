@@ -25,6 +25,15 @@ h3 {
     font-family: 'Roboto-Regular', sans-serif;
 }
 
+h4 {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.25rem;
+    font-size: 2.25rem;
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
 .section-container {
     margin: 75px auto;
     height: 100%;
@@ -51,6 +60,25 @@ td {
     text-align: center;
     font-size: 2rem;
 }
+
+/*
+ * RESULT
+ */
+.pre-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pre-container pre {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'Roboto-Regular', sans-serif;
+    font-size: 1.25rem;
+}
+
 
 /*
  * FOOTER SECTION
