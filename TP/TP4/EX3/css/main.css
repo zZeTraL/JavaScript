@@ -79,6 +79,12 @@ td {
     font-size: 1.25rem;
 }
 
+/*
+ *  JS
+ */
+.warning {
+    color: #ff7675;
+}
 
 /*
  * FOOTER SECTION

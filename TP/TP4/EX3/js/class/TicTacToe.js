@@ -10,6 +10,11 @@ class TicTacToe extends Observable {
     // Getters
     getCurrentPlayer(){ return this.currentPlayer; }
     getCaseState(column, line){ return this.grid[column][line]; }
+
+    /**
+     * Vérifie si la partie est terminé
+     * @returns {boolean}
+     */
     isFinished(){
 
         // win column / 3 possibilités
@@ -26,7 +31,6 @@ class TicTacToe extends Observable {
         if((this.grid[0][0] === 0 && this.grid[1][1] === 0 && this.grid[2][2] === 0) || (this.grid[0][0] === 1 && this.grid[1][1] === 1 && this.grid[2][2] === 1)){ return true; }
         if((this.grid[0][2] === 0 && this.grid[1][1] === 0 && this.grid[2][0] === 0) || (this.grid[0][2] === 1 && this.grid[1][1] === 1 && this.grid[2][0] === 1)){ return true; }
 
-
         // On check si toutes les cases sont actives
         let count = 0;
         for(let column = 0; column < 3; ++column) {
@@ -41,6 +45,11 @@ class TicTacToe extends Observable {
         }
 
     }
+
+    /**
+     * Vérifie si la partie possède un vainqueur
+     * @returns {boolean}
+     */
     hasWinner(){
         if(this.isFinished() && this.currentPlayer === 1 && !this.mate){
             this.winner = 0;
@@ -52,11 +61,16 @@ class TicTacToe extends Observable {
             return false;
         }
     }
+
     getWinner(){
         return this.winner;
     }
 
-    // Methods
+    /**
+     * Permet de cocher une case
+     * @param column
+     * @param line
+     */
     play(column, line){
         if(this.grid[column][line] === undefined){
             if(this.currentPlayer === 0){
@@ -68,6 +82,10 @@ class TicTacToe extends Observable {
             }
         }
     }
+
+    /**
+     * Permet de reset la partie
+     */
     reset(){
         this.currentPlayer = 0;
         this.winner = undefined

@@ -16,10 +16,15 @@ class TicTacToeView{
             let gridCase = document.getElementsByTagName("td");
             gridCase[index - 1].textContent = this.gameCore.getCurrentPlayer();
         } else {
-            console.log("THIS CASE IS ALREADY CROSSED !!!!")
+            let outputResult = document.getElementById("output");
+            outputResult.textContent = "This case is already crossed !!!";
+            outputResult.classList.add("warning");
+            setTimeout(function(){
+                outputResult.textContent = "";
+                outputResult.classList.remove("warning");
+            }, 1500);
         }
     }
-
 
     // Methods
     isGameFinished(){
@@ -52,6 +57,10 @@ class TicTacToeView{
     }
 
 
+    /**
+     * Fonction associé au listener qui va permettre de diférencier les cases
+     * @param event
+     */
     caseClicked(event){
         let caseIndex = event.target.getAttribute("data");
         // DEBUG
