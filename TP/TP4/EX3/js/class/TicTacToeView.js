@@ -64,7 +64,6 @@ class TicTacToeView {
      */
     isGameFinished() {
         if (this.gameCore.isFinished()) {
-            let outputResult = document.getElementById("output");
             if (this.gameCore.hasWinner()) {
                 this.setOutput("GAME IS FINISHED (ID: " + this.gameName + "), DO WE HAVE A WINNER ?\nTHE WINNER IS " + this.gameCore.getWinner());
                 setTimeout(this.clearOutput, 5000);
