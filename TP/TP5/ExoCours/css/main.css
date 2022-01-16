@@ -1,0 +1,91 @@
+body {
+    padding: 0;
+    margin: 0;
+    color: white;
+    overflow-x: hidden;
+    font-family: 'Roboto-Regular', sans-serif;
+    background-image: url(../img/main-background.png);
+    background-color: #34495e;
+}
+
+main {
+    height: auto;
+    margin: auto;
+    min-height:100%;
+}
+
+h1 {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 1px;
+    font-size: 3em;
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+/*
+ *      CHAT
+ */
+.chat-container {
+    display: flex;
+    height: 735px;
+    border: rgba(52, 73, 94, 0.75) solid 5px;
+    border-radius: 25px;
+    background-color: rgba(52, 73, 94, 0.75);
+    width: 90%;
+    margin: auto;
+}
+
+.chat {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.chat > p {
+    color: wheat;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+}
+
+#form {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.25rem; position: fixed;
+    bottom: 0; left: 0; right: 0;
+    display: flex; height: 3rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
+
+#input {
+    border: none;
+    padding: 0 1rem;
+    flex-grow: 1;
+    border-radius: 2rem;
+    margin: 0.25rem;
+}
+
+#input:focus {
+    outline: none;
+}
+
+#form > button {
+    background: #333;
+    border: none;
+    padding: 0 1rem;
+    margin: 0.25rem;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+}
+
+#form > button:hover {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url("../fonts/RobotoCondensed-Regular.ttf") format("truetype");
+}

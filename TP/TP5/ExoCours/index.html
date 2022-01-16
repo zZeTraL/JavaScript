@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Cours 5 - Tutoriel</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="node_modules/socket.io/client-dist/socket.io.js"></script>
+</head>
+<body>
+    <main>
+        <h1>Example of a chat</h1>
+        <div id="chatFrame" class="chat-container">
+            <div id="chat" class="chat">
+                <p>You can type a message he will appear just below</p>
+            </div>
+        </div>
+        <form id="form" action="">
+            <input id="input" autocomplete="off"/><button>Send</button>
+        </form>
+    </main>
+
+    <script> let socket = io(); </script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

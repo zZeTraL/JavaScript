@@ -41,6 +41,11 @@ class TicTacToe extends Observable {
         }
 
     }
+
+    /**
+     * Vérifie si la partie possède un vainqueur
+     * @returns {boolean}
+     */
     hasWinner(){
         if(this.isFinished() && this.currentPlayer === 1 && !this.mate){
             this.winner = 0;
@@ -52,11 +57,15 @@ class TicTacToe extends Observable {
             return false;
         }
     }
-    getWinner(){
-        return this.winner;
-    }
 
-    // Methods
+    // Retourne le vainqueur actuel
+    getWinner(){ return this.winner; }
+
+    /**
+     * Permet de cocher une case
+     * @param column
+     * @param line
+     */
     play(column, line){
         if(this.currentPlayer === 0){
             this.grid[column][line] = 0;
@@ -66,6 +75,10 @@ class TicTacToe extends Observable {
             this.currentPlayer = 0;
         }
     }
+
+    /**
+     * Permet de reset la partie
+     */
     reset(){
         this.currentPlayer = 0;
         this.winner = undefined
