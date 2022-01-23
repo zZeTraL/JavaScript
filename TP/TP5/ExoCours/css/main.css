@@ -1,3 +1,9 @@
+:root {
+    --chatFrameHeight: 500px;
+    --chatFrameMaxWidth: 100%;
+    --chatFrameBackgroundColor: rgba(52, 73, 94, 0.75);
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -28,31 +34,53 @@ h1 {
  */
 .chat-container {
     display: flex;
-    height: 735px;
-    border: rgba(52, 73, 94, 0.75) solid 5px;
+    height: var(--chatFrameHeight);
+    border: var(--chatFrameBackgroundColor) solid 5px;
     border-radius: 25px;
-    background-color: rgba(52, 73, 94, 0.75);
+    background-color: var(--chatFrameBackgroundColor);
     width: 90%;
     margin: auto;
+    transition: ease-in-out 250ms;
 }
 
-.chat {
+.chatDiv {
     width: 100%;
+    max-width: var(--chatFrameMaxWidth);
     margin-top: 10px;
     margin-bottom: 10px;
     padding-right: 25px;
     padding-left: 25px;
 }
 
-.chat > p {
+.chatDiv > p {
     color: wheat;
     font-size: 1.05rem;
     letter-spacing: 1px;
 }
 
+/*
+ *      INPUT
+ */
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    height: 100%;
+}
+
+.currentChar {
+    position: absolute;
+    color: black;
+    font-size: 1rem;
+    padding: 0 1rem;
+    margin: 0.25rem;
+}
+
 #form {
     background: rgba(0, 0, 0, 0.15);
-    padding: 0.25rem; position: fixed;
+    padding: 0.25rem;
+    position: fixed;
     bottom: 0; left: 0; right: 0;
     display: flex; height: 3rem;
     box-sizing: border-box;
@@ -61,10 +89,11 @@ h1 {
 
 #input {
     border: none;
-    padding: 0 1rem;
+    padding: 0 4rem 0 1rem;
     flex-grow: 1;
     border-radius: 2rem;
     margin: 0.25rem;
+    height: 85%;
 }
 
 #input:focus {
