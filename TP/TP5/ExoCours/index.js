@@ -13,7 +13,8 @@ io.on('connection', (socket) => {
    console.log('Un élève est connecté');
 
    socket.on('message', (msg) => {
-        console.log("Message : " + msg);
+       console.log(msg);
+        io.emit('message', msg);
     })
 
    socket.on('disconnect', () => {

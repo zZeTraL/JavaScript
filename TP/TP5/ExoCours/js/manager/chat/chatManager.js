@@ -5,6 +5,12 @@ let chatManager = (function () {
     let chat = document.getElementById("chatDiv");
     let currentChar = document.getElementById("currentChar");
 
+    socket.on('message', (msg) => {
+        let p = document.createElement("p");
+        p.textContent = msg;
+        chat.appendChild(p);
+    })
+
     return {
 
         // Getters
@@ -17,11 +23,9 @@ let chatManager = (function () {
             input.value = "";
             currentChar.textContent = "0/" + maxChar;
         },
+
         sendMessage() {
             if (input.value && input.value.length <= maxChar) {
-                let p = document.createElement("p");
-                p.textContent = input.value;
-                chat.appendChild(p);
                 socket.emit('message', input.value);
                 this.resetInput();
             } else {
